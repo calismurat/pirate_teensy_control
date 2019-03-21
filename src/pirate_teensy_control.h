@@ -9,11 +9,24 @@
 #include "Arduino.h"
 
 //add your includes for the project pirate_teensy_control here
+// ROS
 #include <ros.h>
-#include <geometry_msgs/Twist.h>
-#include <std_msgs/Bool.h>		// PIR-State
-#include <std_msgs/Int8.h>		// Motor-Speed -127-0 backward / 0-127 forward / 0 stop
+#include <ros/time.h>
+#include <std_msgs/Int32.h>             // Encoders left/right
+#include <std_msgs/Float32MultiArray.h> // Encoders ensemble
+#include <std_msgs/UInt8.h>             // Battery volts / encoder values / sw version
+#include <std_msgs/UInt32.h>            // IR-Code from Input IR
+#include <std_msgs/Bool.h>              // PIR-State, Power on/off
+#include <std_msgs/Int8.h>              // Motor-Speed -127-0 backward / 0-127 forward / 0 stop
+#include <geometry_msgs/Twist.h>        // Twist velocity commands
+#include <tf/transform_broadcaster.h>   // TF broadcaster
+#include <tf/tf.h>                      // TF
+#include <nav_msgs/Odometry.h>          // Odometry data (not used!)
+#include <std_msgs/String.h>            // Debug strings
 
+// ARDUINO
+#include <IRremote.h>
+#include <Wire.h>
 
 //end of add your includes here
 #ifdef __cplusplus
