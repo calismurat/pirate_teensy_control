@@ -29,10 +29,9 @@
 #define RESETENCODERS       32      // DEFAULT 0x20
 #define MODE_REGISTER       15      // MD25 Operation Mode Register. We use Mode-Value 1: motors -127 +128
 
-// ODOMETRY
+// HARD LIMIT
 #define MAX_CMD_VELOCITY 1.1        // HARDWARE LIMITER: Velocity in m/s
 #define MAX_MD25_SPEED 30           // HARDWARE LIMITER: Maximum speed in Byte-range of MD25 speed register
-#define WHEEL_ROTATION_TICKS 360;   // Encoder ticks per rotation.
 
 // ARDUINO
 #define LOOP_FREQ 100               // Used in loop() as delay
@@ -74,21 +73,16 @@ ros::Subscriber<geometry_msgs::Twist> Twist_Sub("cmd_vel", &cmd_vel_cb );
 IRrecv irrecv(IR_RECEIVER_PIN);
 decode_results results;
 
-// PIR Setup
+// PIR initial setup
 int PIR_stat = LOW;
 int PIR_val = 0;
 
 // Odometry Setup
 float wheels_track = 0.26;           // Track = distance between both wheels starting from the middle of rubber tread (26mm).
 
+// MD25 final values
 int result_vel_right = 0;            // Final motor speed vars must comply with motor1/2() argument type "integer"
 int result_vel_left = 0;
-
-long x = 0;
-long y = 0;
-double th = 0;
-
-unsigned long last_time = millis();  // used in time delta calculation
 
 // Arduino Setup
 void setup()
