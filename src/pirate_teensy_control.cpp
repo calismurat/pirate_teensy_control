@@ -198,7 +198,7 @@ void loop()
 }
 
 // @TODO: Work in progress!
-// Turn ON/OF driving lights
+// Turn ON/OFF driving lights
 void dlightSwitch( const bool mode ){
   if ( mode == true )
   {
