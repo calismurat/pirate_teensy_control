@@ -79,15 +79,10 @@ int PIR_stat = LOW;
 int PIR_val = 0;
 
 // Odometry Setup
-float wheels_track = 0.204;          // Track = distance between both wheels starting from the middle of rubber tread (26mm).
-float wheel_diameter = 0.1;          // 100mm
-int wheel_ticks = 360;               // Ticks per revolution
+float wheels_track = 0.26;           // Track = distance between both wheels starting from the middle of rubber tread (26mm).
 
 int result_vel_right = 0;            // Final motor speed vars must comply with motor1/2() argument type "integer"
 int result_vel_left = 0;
-
-long last_encoder_left = 0;          // previous encoder left
-long last_encoder_right = 0;         // previous encoder right
 
 long x = 0;
 long y = 0;
